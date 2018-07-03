@@ -1,5 +1,5 @@
 package studentCoursesBackup.myTree;
 
 public interface ObserverI {
-	public void update();
+	public void update(Character character);
 }
