@@ -3,7 +3,7 @@ package studentCoursesBackup.myTree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node implements SubjectI, ObserverI{
+public class Node implements SubjectI, ObserverI, Cloneable{
 
 	private int B_number;
 	private Node leftNode;
@@ -92,6 +92,14 @@ public class Node implements SubjectI, ObserverI{
 		}
 	}
 
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		Node node = new Node(B_number);
+		node.setCourseList(new ArrayList<>(courseList));
+		return node;
+	}
+	
 	public boolean validate(Character courseIn) {
 		// TODO Auto-generated method stub
 		List<Character> validCourses = new ArrayList<Character>();
@@ -110,5 +118,10 @@ public class Node implements SubjectI, ObserverI{
 			return true;
 		}
 		return false;
+	}
+
+	public void addCourse(List<Character> courseList2, Node node) {
+		// TODO Auto-generated method stub
+		node.getCourseList().addAll(courseList2);
 	}
 }

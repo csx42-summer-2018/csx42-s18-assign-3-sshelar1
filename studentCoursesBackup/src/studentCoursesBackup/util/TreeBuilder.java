@@ -53,6 +53,20 @@ public class TreeBuilder {
 			arrayList.add(courseIn);
 			node.setB_number(b_numberIn);
 			node.setCourseList(arrayList);
+			
+			try {
+				Node backup1 = (Node) node.clone();
+				Node backup2 = (Node) node.clone();
+				node.registerObserver(backup1);
+				node.registerObserver(backup2);
+			} catch (CloneNotSupportedException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+				System.exit(1);
+			}
+			bst.insert(node);
+			bstBackUp1.insert(node);
+			bstBackUp2.insert(node);
 		}
 	}	
 	

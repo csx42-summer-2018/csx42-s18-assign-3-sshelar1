@@ -39,16 +39,34 @@ public class BST {
 		return root == null;
 	}
 	
-	public void insert (int B_number) {
-		root = insert(B_number, root);
-	}
 
-	private Node insert(int b_number, Node rootIn) {
+	public void insert(Node rootIn) {
 		// TODO Auto-generated method stub
 		if (rootIn == null) {
 			root = rootIn;
+		}else {
+			Node node = root;
+			while (node != null) {
+				if (root.getB_number() < rootIn.getB_number()) {
+					if (node.getRightNode()==null) {
+						node.setRightNode(rootIn);
+						break;
+					}
+					node = node.getRightNode();
+				}else if (root.getB_number() > rootIn.getB_number()) {
+					if (node.getLeftNode()==null) {
+						node.setLeftNode(rootIn);
+						break;
+					}
+					node = node.getLeftNode();
+				}else{
+					boolean flag = node.getCourseList().contains(rootIn.getCourseList().get(0));
+					if (!flag) {
+						node.addCourse(rootIn.getCourseList(), node);
+					}
+				}
+			}
 		}
-		return root;
 	}
 
 	public void delete(int b_numberIn, Character courseIn) {
