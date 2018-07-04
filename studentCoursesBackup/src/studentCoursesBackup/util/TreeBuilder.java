@@ -39,11 +39,6 @@ public class TreeBuilder {
 		this.bstBackUp2 = bstBackUp2;
 	}
 
-	public void delete(int b_numberIn, String courseIn) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void insert(int b_numberIn, Character courseIn) {
 		// TODO Auto-generated method stub
 		Node node = new Node();

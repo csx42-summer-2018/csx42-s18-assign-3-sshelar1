@@ -10,7 +10,7 @@ public class Driver{
 
 	
 	public static void main(String[] args) {
-		FileProcessor fileProcessor = null;
+		FileProcessor fileProcessorInputFile = null, fileProcessorDeleteFile=null;
 		Results results = null, resultBackUp1= null, resultBackUp2=null;
 		BST bst=null, bstBackUp1=null, bstBackUp2=null;
 		TreeBuilder treeBuilder = null;
@@ -48,7 +48,7 @@ public class Driver{
 		 * Checking for empty input file
 		 */
 		
-		fileProcessor = new FileProcessor(args[0]);
+		fileProcessorInputFile = new FileProcessor(args[0]);
 		
 		/**
 		 * Creating results
@@ -68,7 +68,7 @@ public class Driver{
 		String[] record;
 		int B_number=-1;
 		Character course=null;
-		while ((line = fileProcessor.readLine())!=null) {
+		while ((line = fileProcessorInputFile.readLine())!=null) {
 			record = line.split(":");
 			try {
 				B_number = Integer.parseInt(record[0]);
@@ -80,7 +80,28 @@ public class Driver{
 			}
 		}
 		
-		System.out.println("Hi");
+		fileProcessorDeleteFile = new FileProcessor(args[1]);
+		
+		while ((line = fileProcessorDeleteFile.readLine())!=null) {
+			record = line.split(":");
+			try {
+				B_number = Integer.parseInt(record[0]);
+				course = record[1].charAt(0);
+				treeBuilder.delete(B_number, course);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid B_number");
+			}
+		}
+		
+		bst.printNode(results);
+		bstBackUp1.printNode(resultBackUp1, bstBackUp1.getRoot());
+		bstBackUp2.printNode(resultBackUp2, bstBackUp2.getRoot());
+		
+		results.writeToFile();
+		resultBackUp1.writeToFile();
+		resultBackUp2.writeToFile();
+		
 	}
 	
 }

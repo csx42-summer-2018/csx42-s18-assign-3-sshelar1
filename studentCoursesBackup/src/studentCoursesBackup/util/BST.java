@@ -74,14 +74,34 @@ public class BST {
 		// TODO Auto-generated method stub
 		Node node = root;
 		while (node != null) {
-			if (node.getB_number() < b_numberIn) {
+			if (node.getB_number() == b_numberIn) {
+				node.update(courseIn);
+				node.notifyObservers(courseIn);
+				break;
+			}else if (node.getB_number() < b_numberIn) {
 				node = node.getRightNode();
 			} else if(node.getB_number() > b_numberIn){
 				node = node.getLeftNode();
-			} else if (node.getB_number() == b_numberIn) {
-				node.update(courseIn);
-				node.notifyObservers(courseIn);
 			}
 		}
+	}
+
+	public void printNode(Results resultsIn, Node delete) {
+		// TODO Auto-generated method stub
+		while (delete!=null) {
+			String string = null;
+			for (int i = 0; i < delete.getCourseList().size(); i++) {
+				string = delete.getCourseList().get(i) + " "; 
+			}
+			resultsIn.storeNewResult(delete.getB_number() + " " + string);
+			printNode(resultsIn, delete.getLeftNode());
+			printNode(resultsIn, delete.getRightNode());
+		}
+	}
+
+	public void printNode(Results resultsIn) {
+		// TODO Auto-generated method stub
+		Node delete = root;
+		printNode(resultsIn, delete);
 	}
 }

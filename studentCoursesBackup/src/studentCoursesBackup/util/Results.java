@@ -42,18 +42,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 	}
 
 	@Override
-	public void writeToFile(String s) {
-		// TODO Auto-generated method stub
-		try {
-			bufferedWriter = new BufferedWriter(new FileWriter(file));
-			bufferedWriter.write(s + "\n");
-			bufferedWriter.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("writeToFile : " + e.getMessage());
-		}
-	}
-	
 	public void writeToFile() {
 		// TODO Auto-generated method stub
 		try {
