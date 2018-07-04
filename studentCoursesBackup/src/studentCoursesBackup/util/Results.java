@@ -18,6 +18,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 	 */
 	public Results(String string) {
 		// TODO Auto-generated constructor stub
+		MyLogger.writeMessage("In Result constructor", MyLogger.DebugLevel.CONSTRUCTOR);
 		file = new File(string);
 		trace = new ArrayList<String>();
 		try {

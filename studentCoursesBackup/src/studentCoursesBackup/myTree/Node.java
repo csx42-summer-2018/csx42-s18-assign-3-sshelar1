@@ -3,6 +3,8 @@ package studentCoursesBackup.myTree;
 import java.util.ArrayList;
 import java.util.List;
 
+import studentCoursesBackup.util.MyLogger;
+
 public class Node implements SubjectI, ObserverI, Cloneable{
 
 	private int B_number;
@@ -13,6 +15,7 @@ public class Node implements SubjectI, ObserverI, Cloneable{
 	private List<Character> courseList = new ArrayList<Character>();
 	
 	public Node() {
+		MyLogger.writeMessage("In Node Constructor", MyLogger.DebugLevel.CONSTRUCTOR);
 		leftNode = null;
 		rightNode = null;
 		B_number = 0;
@@ -95,6 +98,7 @@ public class Node implements SubjectI, ObserverI, Cloneable{
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		// TODO Auto-generated method stub
+		MyLogger.writeMessage("Clonning Node with : " + B_number + "and" + courseList.toString(), MyLogger.DebugLevel.CLONNING);
 		Node node = new Node(B_number);
 		node.setCourseList(new ArrayList<>(courseList));
 		return node;

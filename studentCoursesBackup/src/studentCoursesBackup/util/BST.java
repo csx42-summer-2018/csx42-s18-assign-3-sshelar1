@@ -15,6 +15,7 @@ public class BST {
 	
 	public BST(Results results) {
 		// TODO Auto-generated constructor stub
+		MyLogger.writeMessage("In BST conctructor", MyLogger.DebugLevel.CONSTRUCTOR);
 		this.setResults(results);
 		root = null;
 	}
@@ -42,6 +43,7 @@ public class BST {
 
 	public void insert(Node rootIn) {
 		// TODO Auto-generated method stub
+		MyLogger.writeMessage("New record added with " + rootIn.getB_number() + " : " + rootIn.getCourseList(), MyLogger.DebugLevel.CHANGEINPOOL);
 		if (root == null) {
 			root = rootIn;
 		}else {
@@ -75,6 +77,7 @@ public class BST {
 		Node node = root;
 		while (node != null) {
 			if (node.getB_number() == b_numberIn) {
+				MyLogger.writeMessage("New record added with " + b_numberIn + " : " + courseIn, MyLogger.DebugLevel.CHANGEINPOOL);
 				node.update(courseIn);
 				node.notifyObservers(courseIn);
 				break;
@@ -88,7 +91,7 @@ public class BST {
 
 	public void printNode(Results resultsIn, Node delete) {
 		// TODO Auto-generated method stub
-		while (delete!=null) {
+		if (delete!=null) {
 			String string = null;
 			for (int i = 0; i < delete.getCourseList().size(); i++) {
 				string = delete.getCourseList().get(i) + " "; 

@@ -10,6 +10,8 @@ public class TreeBuilder {
 	
 	public TreeBuilder(BST bstIn, BST bstBackUp1In, BST bstBackUp2In) {
 		// TODO Auto-generated constructor stub
+		
+		MyLogger.writeMessage("In TreeBuilder constructor", MyLogger.DebugLevel.CONSTRUCTOR);
 		setBst(bstIn);
 		setBstBackUp1(bstBackUp1In);;
 		setBstBackUp2(bstBackUp2In);
