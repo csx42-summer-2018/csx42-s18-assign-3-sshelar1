@@ -42,12 +42,18 @@ public class BST {
 
 	public void insert(Node rootIn) {
 		// TODO Auto-generated method stub
-		if (rootIn == null) {
+		if (root == null) {
 			root = rootIn;
 		}else {
 			Node node = root;
 			while (node != null) {
-				if (root.getB_number() < rootIn.getB_number()) {
+				if (node.getB_number() == rootIn.getB_number()) {
+					boolean flag = node.getCourseList().contains(rootIn.getCourseList().get(0));
+					if (!flag) {
+						node.addCourse(rootIn.getCourseList(), node);
+					}
+					break;
+				}else if (root.getB_number() < rootIn.getB_number()) {
 					if (node.getRightNode()==null) {
 						node.setRightNode(rootIn);
 						break;
@@ -59,11 +65,6 @@ public class BST {
 						break;
 					}
 					node = node.getLeftNode();
-				}else{
-					boolean flag = node.getCourseList().contains(rootIn.getCourseList().get(0));
-					if (!flag) {
-						node.addCourse(rootIn.getCourseList(), node);
-					}
 				}
 			}
 		}

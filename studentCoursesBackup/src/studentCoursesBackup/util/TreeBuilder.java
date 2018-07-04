@@ -59,14 +59,15 @@ public class TreeBuilder {
 				Node backup2 = (Node) node.clone();
 				node.registerObserver(backup1);
 				node.registerObserver(backup2);
+				bst.insert(node);
+				bstBackUp1.insert(backup1);
+				bstBackUp2.insert(backup2);
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 				System.exit(1);
 			}
-			bst.insert(node);
-			bstBackUp1.insert(node);
-			bstBackUp2.insert(node);
+			
 		}
 	}	
 	

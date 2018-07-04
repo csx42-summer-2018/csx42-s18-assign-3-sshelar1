@@ -19,7 +19,7 @@ public class Driver{
 		/**
 		 * Checking for valid arguments i.e 3
 		 */
-		if (args.length != 5) {
+		if (args.length != 6) {
 			System.out.println("Invaid number of arguments");
 			System.exit(1);
 		}
@@ -80,6 +80,7 @@ public class Driver{
 			}
 		}
 		
+		System.out.println("Hi");
 	}
 	
 }
